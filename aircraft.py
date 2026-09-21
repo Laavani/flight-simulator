@@ -2,6 +2,7 @@ class Aircraft:
     def __init__(self):
 
         self.mass = 10000
+        self.thrust = 10000.0
         #position in meters
         self.pos = [0, 0, 1000.0]
         #velocity in meters per second
@@ -24,4 +25,6 @@ class Aircraft:
         return self.ang_vel
     def get_forces(self):
             return self.forces
+    def get_thrust(self):
+        return self.thrust
     

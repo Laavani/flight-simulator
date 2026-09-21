@@ -11,6 +11,8 @@ while aircraft.pos[2] > 0:
     time += dt
 
 print("Aircraft has hit the ground.")
-print("Time taken:", time)
-print("Position:", aircraft.pos)
-print("Velocity:", aircraft.vel)
+print("Time taken:", round(time, 2), "seconds")
+print("Position:", [round(value, 2) for value in aircraft.pos])
+print("Velocity:", [round(value, 2) for value in aircraft.vel])
+print("Acceleration:", [round(value, 2) for value in aircraft.acc], "m/s^2")
+print("Thrust:", round(aircraft.thrust, 2), "N")
