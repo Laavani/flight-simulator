@@ -2,6 +2,14 @@ GRAVITY = -9.81
 
 def update_aircraft(aircraft, dt):
 
+    aircraft.force = [0.0, 0.0, 0.0]
+
+    #gravity
+    aircraft.force[2] += aircraft.mass * GRAVITY
+
+    # F = m * a => a = F / m
+    aircraft.acc[0] = GRAVITY
+    aircraft.acc[1] = GRAVITY
     aircraft.acc[2] = GRAVITY
 
     #v new = v old + a * dt
