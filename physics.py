@@ -1,4 +1,7 @@
+
+#Constants
 GRAVITY = -9.81
+AIR_DENSITY = 1.225 #kg/m^3 at sea level
 
 def update_aircraft(aircraft, dt):
 
@@ -6,7 +9,15 @@ def update_aircraft(aircraft, dt):
 
     #gravity
     aircraft.force[2] += aircraft.mass * GRAVITY
+
+    #thrust
     aircraft.force[0] += aircraft.thrust
+
+    #drag
+    velocity_x = aircraft.vel[0]
+    #drag force formula = 0.5 * air_density * velocity^2 * reference_area * drag_coefficient
+    aircraft.drag = 0.5 * AIR_DENSITY * (velocity_x ** 2) * aircraft.reference_area * aircraft.drag_coefficient
+    aircraft.force[0] -= aircraft.drag
 
     # F = m * a => a = F / m
     aircraft.acc[0] = aircraft.force[0] / aircraft.mass

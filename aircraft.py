@@ -11,7 +11,11 @@ class Aircraft:
         self.acc = [0, 0, 0]
         #angular velocity in radians per second
         self.ang_vel = [0, 0, 0]
-        self.forces = [0.0, 0.0, 0.0]
+        self.force = [0.0, 0.0, 0.0]
+        #reference area in square meters
+        self.reference_area = 20.0
+        self.drag_coefficient = 0.02
+        self.drag = 0.0
 
     def get_pos(self):
         return self.pos
@@ -24,7 +28,9 @@ class Aircraft:
     def get_ang_vel(self):
         return self.ang_vel
     def get_forces(self):
-            return self.forces
+            return self.force
     def get_thrust(self):
         return self.thrust
+    def get_reference_area(self):
+        return self.reference_area
     
