@@ -33,17 +33,8 @@ tail = box(
 
 plane = compound([body, nose, left_wing, tail])
 
-def update_visuals(position, velocity):
-    plane.pos = vector(position[0], position[1], position[2])
-    hud.text = f"ALTITUDE: {(-1*position[2]):.1f} m\nSPEED: {velocity[2]:.1f} m/s\n\nROLL: 0.0°\nPITCH: 0.0°\nYAW: 0.0°"
-
-position = [0, 0, 0]
-velocity = [6, 2, 7]
-while True:
-    rate(60)
-    dt = 1/60
-    position[0] += velocity[0] * dt
-    position[1] += velocity[1] * dt
-    position[2] += velocity[2] * dt
-    update_visuals(position, velocity)
+def update_visuals(aircraft):
+    scene.center = vector(aircraft.get_pos()[0], aircraft.get_pos()[1], aircraft.get_pos()[2]-500)
+    plane.pos = vector(aircraft.get_pos()[0], aircraft.get_pos()[1], aircraft.get_pos()[2])
+    hud.text = f"ALTITUDE: {(aircraft.get_pos()[2]):.1f} m\nVx: {aircraft.get_vel()[0]:.1f} m/s\nVy: {aircraft.get_vel()[1]:.1f} m/s\nVz: {aircraft.get_vel()[2]:.1f} m/s\n\nROLL: {aircraft.get_roll():.1f}°\nPITCH: {aircraft.get_pitch():.1f}°\nYAW: {aircraft.get_yaw():.1f}°"
     
